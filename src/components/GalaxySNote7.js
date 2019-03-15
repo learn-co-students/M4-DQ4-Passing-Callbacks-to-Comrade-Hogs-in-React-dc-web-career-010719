@@ -11,7 +11,7 @@ export default class GalaxySNote7 extends React.Component {
       panicked: false,
     }
 
-    this.squeelAudio = new Audio(wreee);
+    this.squealAudio = new Audio(wreee);
     this.exclaimAudio = new Audio(exclaim);
     this.exclaimAudio.addEventListener("ended", () => {
       this.throwAFit()
@@ -27,7 +27,9 @@ export default class GalaxySNote7 extends React.Component {
   exclaim = () => {
     if (this.state.panicked) return
     this.exclaimAudio.play()
-    this.squeelAudio.play()
+    this.squealAudio.play()
+    this.props.alterEnvironment('inhospitable')
+    this.setState({panicked: true})
   }
 
   panic = () => (<img id="galaxy-exclamation" className="exclamation" src={exclamation} alt="" />)
